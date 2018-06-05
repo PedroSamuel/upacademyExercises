@@ -1,0 +1,19 @@
+.container {
+    border: 1px solid grey;
+    background: peachpuff;
+    height: 500px;
+    width: 500px;
+    position: absolute;
+    /* top: 20%;
+    left: 20%; */
+}
+
+.bola {
+    height: 35px;
+    width: 35px;
+    -moz-border-radius: 35px;
+    border-radius: 35px;
+    background: blue;
+    position: relative;
+    
+}
