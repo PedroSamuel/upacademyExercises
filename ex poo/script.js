@@ -1,11 +1,11 @@
 
-class Geometrics{
+class Figures{
     getArea(){
-        alert("The area of this " + this.constructor.name + " is " + this.area);
+        alert("The area of this " + this.constructor.name + " is " + this.area + " cm2");
     }
     getVolume(){
         if (this.volume > 0)
-            alert("The volume of this " + this.constructor.name + " is " + this.volume);
+            alert("The volume of this " + this.constructor.name + " is " + this.volume + "cm3");
         else
             alert("Geometric figures have no volume propriety.")
     }    
@@ -13,7 +13,7 @@ class Geometrics{
 
 
 
-class Polygon extends Geometrics{
+class Polygon extends Figures{
     constructor(height, width){
         super();
         this.height = height;
@@ -33,9 +33,9 @@ class Polygon extends Geometrics{
 
 
 class Square extends Polygon {
-    constructor(sideLenght){
-        super(sideLenght, sideLenght);
-        this.sideLenght = sideLenght;
+    constructor(sideLength){
+        super(sideLength, sideLength);
+        this.sideLength = sideLength;
     }
 
 
@@ -57,7 +57,7 @@ class Rectangle extends Polygon{
         }
 }
 
-class Circle extends Geometrics{
+class Circle extends Figures{
     constructor(radium){
         super();
         this.radium = radium;
@@ -66,14 +66,14 @@ class Circle extends Geometrics{
     }
 }
 
-class  PolyedricSolids extends Geometrics{
+class  PolyedricSolids extends Figures{
         constructor(height, width, depth){
             super();
             this.height = height;
             this.width = width;
-            this.area = height * width;
+            this.area = height * width + width * depth + height * depth;
+            this.volume = height * width * depth;
             this.depth = depth;
-            this.volume = 0;
             
         }
 
@@ -81,16 +81,19 @@ class  PolyedricSolids extends Geometrics{
 
 
 class Cube extends PolyedricSolids{
-        constructor(sideLenght){
-            super(sideLenght, sideLenght, sideLenght)
-            this.sideLenght = sideLenght;
-            this.side = new Square(sideLenght);
-            this.area = side.area * 6;
-            this.volume = side.area * sideLenght;
+        constructor(sideLength){
+            super(sideLength, sideLength, sideLength)
+            this.sideLength = sideLength;
         }
 }
 
-var picasso = new Cube(4);
+class Parallelepiped extends PolyedricSolids{
+        constructor(height, width, depth){
+            super(height, width, depth);
+        }
+}
+
+var picasso = new Cube(40);
 picasso.getArea();
 picasso.getVolume();
 

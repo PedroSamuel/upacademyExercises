@@ -1,4 +1,10 @@
-.container {
+html {
+    background-image: url("Geometric.jpg"); 
+    background-repeat: no-repeat;
+}
+
+
+/* .container {
     border: 1px solid grey;
     background: peachpuff;
     height: 500px;
@@ -6,7 +12,7 @@
     position: absolute;
     /* top: 20%;
     left: 20%; */
-}
+/* }
 
 .bola {
     height: 35px;
@@ -16,4 +22,4 @@
     background: blue;
     position: relative;
     
-}
+} */
