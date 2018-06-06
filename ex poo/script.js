@@ -1,59 +1,71 @@
 
 class Figures{
+    constructor(){
+    this.area = 0;
+    this.volume = 0;
+    this.perimeter = 0;
+    }
     getArea(){
         alert("The area of this " + this.constructor.name + " is " + this.area + " cm2");
     }
-    getVolume(){
-        if (this.volume > 0)
-            alert("The volume of this " + this.constructor.name + " is " + this.volume + "cm3");
-        else
-            alert("Geometric figures have no volume propriety.")
-    }    
+
+    getPerimeter(){
+        alert("The perimeter of this " + this.constructor.name + " is " + this.perimeter + " cm");
+
+    }
 }
 
+class Solids{
+    constructor(){
+        this.volume = 0;
+        this.surfArea = 0;
+    }
 
+    getVolume(){
+        alert("The volume of this " + this.constructor.name + " is " + this.volume + "cm3");
+    }    
 
-class Polygon extends Figures{
-    constructor(height, width){
+    getSurfArea(){
+        alert("The surface area of this " + this.constructor.name + " is " + this.surfArea + "cm2");
+
+    }
+}
+
+class Figures1 extends Figures{ 
+    constructor(height,width){
         super();
         this.height = height;
         this.width = width;
-        this.area = height * width;
-        this.volume = 0;
-        //this.volume = height * width * depth;
-        }
-        // getArea(){
-        //     alert("The area of this " + this.constructor.name + " is " + this.area);
-        // }
-
-
+        this.area = (height * width);
+    }
 }
 
-
-
-
-class Square extends Polygon {
+class Square extends Figures1{
     constructor(sideLength){
         super(sideLength, sideLength);
         this.sideLength = sideLength;
+        this.area = sideLength ** 2;
+        this.perimeter = sideLength * 4;
     }
-
-
 }
 
 
 
-class Triangle extends Polygon{
+class Triangle extends Figures1{
+    constructor(height,width){
+                super(height, width);
+                this.hypotenuse = Math.sqrt(height**2 + width**2);
+
+        this.area = this.area / 2;
+        this.perimeter = (height + width + this.hypotenuse);
+    }
+}
+
+
+class Rectangle extends Figures1{
     constructor(height,width){
         super(height,width);
-        this.areat = this.area / 2;
-        this.area = this.areat;
-    }
-}
-
-class Rectangle extends Polygon{
-    constructor(height,width){
-        super(height, width);
+        this.perimeter = (2*height + 2*width);
         }
 }
 
@@ -61,51 +73,59 @@ class Circle extends Figures{
     constructor(radium){
         super();
         this.radium = radium;
-        this.volume = 0;
-        this.area = radium * Math.PI;
+        this.area = radium**2 * Math.PI;
+        this.perimeter = 2*(radium * Math.PI)
     }
 }
 
-class  PolyedricSolids extends Figures{
-        constructor(height, width, depth){
-            super();
-            this.height = height;
-            this.width = width;
-            this.area = height * width + width * depth + height * depth;
-            this.volume = height * width * depth;
-            this.depth = depth;
-            
-        }
-
+class Solids1 extends Solids{
+    constructor(height, width, depth){
+        super(height, width, depth);
+        this.height = height;
+        this.width = width;
+        this.depth = depth;
+        this.volume = height * width * depth;
+    }
 }
 
-
-class Cube extends PolyedricSolids{
+class Cube extends Solids1{
         constructor(sideLength){
             super(sideLength, sideLength, sideLength)
             this.sideLength = sideLength;
+            this.surfArea = 6* sideLength**2; 
         }
 }
 
-class Parallelepiped extends PolyedricSolids{
+
+
+class Parallelepiped extends Solids1{
         constructor(height, width, depth){
             super(height, width, depth);
+            this.surfArea =  (2 * (height*width)) + (2 * (width * depth)) + (2 * (height * depth));
         }
 }
 
-var picasso = new Cube(40);
-picasso.getArea();
+var picasso = new Cube(4);
+picasso.getSurfArea();
 picasso.getVolume();
 
+var matisse = new Parallelepiped(4, 5, 2);
+matisse.getSurfArea();
+matisse.getVolume();
 
-// var coiso = new Polygon(4,3);
+
+
+// var coiso = new Figures(4,3);
 // coiso.getArea();
 
-// var coisao = new Triangle(2,3);
+// var coisao = new Rectangle(5,3);
 // coisao.getArea();
+// coisao.getPerimeter();
 
-// var coisinho = new Square(4);
+
+// var coisinho = new Circle(2);
 // coisinho.getArea();
+// coisinho.getPerimeter();
 
 // var coisicoisi = new Circle(45);
 // coisicoisi.getArea();
@@ -139,7 +159,7 @@ picasso.getVolume();
 //                 break;
        
 //             default:
-//                 alert("That is not a supported polygon type.");
+//                 alert("That is not a supported Figures type.");
 //                 break;
 //         }
 //     }
@@ -154,7 +174,7 @@ picasso.getVolume();
 //     }
 
 //     Run(){
-//         var type = prompt("Please enter the type of Polygon (cm)", "square");
+//         var type = prompt("Please enter the type of Figures (cm)", "square");
 //         this.type = type;
 //         var result = this.Area();
 //         if (result != undefined){
@@ -178,6 +198,6 @@ picasso.getVolume();
 
 
 
-// var poly = new Polygon();
+// var poly = new Figures();
 
 
